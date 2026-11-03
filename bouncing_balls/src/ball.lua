@@ -4,9 +4,9 @@ Ball.__index = Ball
 
 function Ball.new(x, y, radius, vx, vy, texture)
     local b = setmetatable({
-        position = vector.Create(x, y),
+        position = vector.new(x, y),
         radius = radius,
-        velocity = vector.Create(vx, vy),
+        velocity = vector.new(vx, vy),
         texture = texture,
         rotation = love.math.random() * math.pi * 2,
         spin = (love.math.random() - 0.5) * 4
