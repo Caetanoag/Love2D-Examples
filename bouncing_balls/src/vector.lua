@@ -1,50 +1,37 @@
-local function CreateVector(x, y)
-    return ({
+local Vector = {}
+Vector.__index = Vector
+
+function Vector.new(x, y)
+    local v = setmetatable({
         x = x,
         y = y
-    })
+    }, Vector)
+    return v
 end
-
-local function AddVectors(v1, v2)
-    return CreateVector(v1.x + v2.x, v1.y + v2.y)
+function Vector:Add(other)
+    return Vector.new(self.x + other.x, self.y + other.y)
 end
-
-local function ReverseVector(v)
-    return CreateVector(-v.x, -v.y)
+function Vector:Reverse()
+    return Vector.new(-self.x, -self.y)
 end
-
-local function AddToVector(v1, scalarX, scalarY)
-    return CreateVector(v1.x + scalarX, v1.y + scalarY)
+function Vector:AddTo(scalarX, scalarY)
+    return Vector.new(self.x + scalarX, self.y + scalarY)
 end
-
-local function ScaleVector(v, scalar)
-    return CreateVector(v.x * scalar, v.y * scalar)
+function Vector:Scale(scalar)
+    return Vector.new(self.x * scalar, self.y * scalar)
 end
-
-local function VectorMagnitude(v)
-    return math.sqrt(v.x ^ 2 + v.y ^ 2)
+function Vector:Magnitude()
+    return math.sqrt(self.x ^ 2 + self.y ^ 2)
 end
-
-local function NormalizeVector(v)
-    local magnitude = VectorMagnitude(v)
+function Vector:Normalize()
+    local magnitude = self:Magnitude()
     if magnitude == 0 then
-        return CreateVector(0, 0)
+        return Vector.new(0, 0)
     else
-        return CreateVector(v.x / magnitude, v.y / magnitude)
+        return Vector.new(self.x / magnitude, self.y / magnitude)
     end
 end
-
-local function Dot(v1, v2)
-    return v1.x * v2.x + v1.y * v2.y
+function Vector:Dot(other)
+    return self.x * other.x + self.y * other.y
 end
-
-return {
-    Create = CreateVector,
-    Add = AddVectors,
-    Reverse = ReverseVector,
-    AddTo = AddToVector,
-    Scale = ScaleVector,
-    Magnitude = VectorMagnitude,
-    Normalize = NormalizeVector,
-    Dot = Dot
-}
+return Vector
