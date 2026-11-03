@@ -22,8 +22,6 @@ Or navigate into the project folder and run:
 
 - [LÖVE 11.5+](https://love2d.org)
 - Arch Linux: `sudo pacman -S love`
-- Any editor works; [VS Code](https://code.visualstudio.com/) with the
-  Love2D extension is a common choice.
 
 ## Structure
 
