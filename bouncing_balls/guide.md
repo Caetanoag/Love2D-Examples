@@ -8,7 +8,6 @@ collision response, particles, and sound are all implemented in Lua.
 
 <video width="600" controls>
   <source src="assets/demo.mp4" type="video/mp4">
-  Seu navegador não suporta vídeo HTML5.
 </video>
 
 ## Running
