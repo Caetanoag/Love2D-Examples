@@ -3,12 +3,8 @@
 A small LÖVE (Love2D) demo where balls bounce around the window, collide with
 each other, throw off sparks, and play a procedurally generated impact sound.
 There are no image or audio assets to fetch beyond the ball texture — the
-collision response, particles, and sound are all implemented in Lua.
-## Demo Video
-
-<video width="600" controls>
-  <source src="assets/demo.mp4" type="video/mp4">
-</video>
+collision response, particles, and sound are all implemented in Lua. Watch the demo 
+[![Demo](./assets/thumbnail.png)](./assets/demo.mp4)
 
 ## Running
 
