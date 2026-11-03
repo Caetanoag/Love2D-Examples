@@ -2,15 +2,37 @@ local ball = require("src.ball")
 local spark = require("src.spark")
 local textures = require("src.textures")
 local sound = require("src.sound")
-function love.load()
+local MAX_BALLS = 100
+
+local function parsePositiveInteger(s)
+    if type(s) ~= "string" then
+        return false
+    end
+    if not s:match("^%d+$") then
+        return false
+    end
+    local n = tonumber(s)
+    if n <= 0 or n > MAX_BALLS then
+        return false
+    end
+    return true, n
+end
+function love.load(args)
     sound.load()
     love.graphics.setDefaultFilter("linear", "linear")
     local tex = textures.circular("assets/ball.png")
     spark.clear()
+    local ballsQuantity = 10
+    if #args > 0 then
+        local ok, n = parsePositiveInteger(args[1])
+        if ok then
+            ballsQuantity = n
+        end
+    end
     Balls = {}
-    for i = 1, 10 do
-        local x = love.math.random(50, love.graphics.getWidth() - 50)
-        local y = love.math.random(50, love.graphics.getHeight() - 50)
+    for i = 1, ballsQuantity do
+        local x = love.math.random(0, love.graphics.getWidth())
+        local y = love.math.random(0, love.graphics.getHeight())
         local r = love.math.random(20, 40)
         local vx = love.math.random(-100, 100)
         local vy = love.math.random(-100, 100)
